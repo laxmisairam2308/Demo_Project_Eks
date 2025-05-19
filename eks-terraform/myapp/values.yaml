@@ -1,0 +1,39 @@
+# values.yaml
+
+# Application Configuration
+replicaCount: 2
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+
+# Docker Image Configuration
+image:
+  repository: "818471591518.dkr.ecr.us-east-1.amazonaws.com/sample-app"
+  tag: "latest"
+  pullPolicy: "IfNotPresent"
+
+# Kubernetes Service Configuration
+service:
+  port: 5000
+
+# Resource Requests and Limits
+resources:
+  requests:
+    cpu: "250m"
+    memory: "512Mi"
+  limits:
+    cpu: "500m"
+    memory: "1Gi"
+
+# PostgreSQL Configuration
+postgresql:
+  host: "my-postgresql.default.svc.cluster.local"
+  dbName: "mydatabase"
+  user: "postgres"
+  password: "password"  # Consider using Kubernetes Secrets
+
+# Liveness and Readiness Probes
+livenessProbe:
+  httpGet
